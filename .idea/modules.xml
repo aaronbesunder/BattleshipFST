@@ -3,10 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/BattleshipFST.iml" filepath="$PROJECT_DIR$/.idea/BattleshipFST.iml" />
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/Fstfolder/Fstfolder.iml" filepath="$PROJECT_DIR$/Fstfolder/Fstfolder.iml" />
-=======
->>>>>>> origin/master
     </modules>
   </component>
 </project>
