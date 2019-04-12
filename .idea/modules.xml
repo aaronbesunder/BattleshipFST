@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/BattleshipFST.iml" filepath="$PROJECT_DIR$/.idea/BattleshipFST.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Fstfolder/Fstfolder.iml" filepath="$PROJECT_DIR$/Fstfolder/Fstfolder.iml" />
     </modules>
   </component>
 </project>
