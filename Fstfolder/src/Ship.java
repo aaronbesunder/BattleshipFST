@@ -11,6 +11,6 @@ public class Ship {
     }
 
     public static void main(String[] args) {
-        System.out.println("gooodbye world");
+        System.out.println("com sci is fun");
     }
 }
