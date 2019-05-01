@@ -77,7 +77,7 @@ public class Boards {
                 int head = 0;
                 do {
                     try {
-                        int row = (int) ((Math.random() * 6) + 1);
+                        int row = (int) ((Math.random() * 7) + 1);
                         int column = (int) ((Math.random() * 10) + 1);
                         head = ((row * 10) + column);
                         if (userBoard.contains(head) || userBoard.contains(head + 10) || userBoard.contains(head + 20)) {
@@ -96,7 +96,7 @@ public class Boards {
                 int head = 0;
                 do {
                     try {
-                        int column = (int) ((Math.random() * 5) + 1);
+                        int column = (int) ((Math.random() * 7) + 1);
                         int row = (int) ((Math.random() * 10) + 1);
                         head = ((column * 10) + row);
                         if (userBoard.contains(head) || userBoard.contains(head + 1) || userBoard.contains(head + 2)) {
