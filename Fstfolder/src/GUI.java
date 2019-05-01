@@ -1,2 +1,6 @@
-public class GUI {
+
+import javafx.*;
+
+public class GUI{
+
 }
