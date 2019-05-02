@@ -10,7 +10,6 @@ public class UserInterface {
         System.out.println("The first ship is a 5, type 0 to place it vertically or 1 to place horizontally:");
         Scanner sc = new Scanner(System.in);
         int verthoriz = sc.nextInt();
-        do{
             if (verthoriz == 0) {
                 System.out.println("Choose a number between 1 and 60 to be the head of the ship.");
                 int head = sc.nextInt();
@@ -28,7 +27,6 @@ public class UserInterface {
                 playerBoard.add(head + 3);
                 playerBoard.add(head + 4);
             }
-        }while (verthoriz==0 || verthoriz==1);
 
         System.out.println("The next two ships are 4, type 0 to place it vertically or 1 to place horizontally");
         for (int i = 0; i < 2; i++) {
