@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class UserInterface {
     public static void main(String [] args) {
 
+        Boards userBoard = new Boards();
+        System.out.println(userBoard.userBoard);
+
         System.out.println("Hello! Welcome to battleship.");
         System.out.println("On a 10 by 10 board, you will place five ships with different sizes either vertically or horizontally, without overlaps.");
         ArrayList <Integer> playerBoard = new ArrayList<>();
@@ -29,8 +32,8 @@ public class UserInterface {
                 playerBoard.add(head + 4);
             }
 
-        System.out.println("The next two ships are 4, type 0 to place it vertically or 1 to place horizontally");
         for (int i = 0; i < 2; i++) {
+            System.out.println("The next ship is a 4, type 0 to place it vertically or 1 to place horizontally");
             verthoriz = sc.nextInt();
             if (verthoriz==0){
                 System.out.println("Choose a number between 1 and 70 to be the head of the ship.");
@@ -50,8 +53,8 @@ public class UserInterface {
             }
         }
 
-        System.out.println("The next two ships are 3, type 0 to place it vertically or 1 to place horizontally");
         for (int i = 0; i < 2; i++) {
+            System.out.println("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
             verthoriz = sc.nextInt();
             if (verthoriz==0){
                 System.out.println("Choose a number between 1 and 80 to be the head of the ship.");
@@ -70,22 +73,41 @@ public class UserInterface {
         }
 
         int count = 1;
-        boolean won = false;
-        Boards userBoard = new Boards();
+        boolean playerWon = false;
+        boolean computerWon = false;
 
-        while (!won) {
+        while (!playerWon & !computerWon) {
             if (count%2 > 0) {
-                //call on AI to take turn
+                int computerGuess =(int) ((Math.random()*100)+1);
+                if (playerBoard.contains(computerGuess)) {
+                    for (int i=0; i<playerBoard.size(); i++) {
+                        if (playerBoard.get(i) == computerGuess) {
+                            playerBoard.remove(i);
+                        }
+                    }
+                }
+                if (playerBoard.isEmpty()) {
+                    computerWon = true;
+                    System.out.println("You lost");
+                }
             }
             else if (count%2 == 0) {
                 System.out.println("Enter a number between 1 and 100 as your guess.");
                 Scanner sc1 = new Scanner(System.in);
                 int guess = sc.nextInt();
                 if (userBoard.userBoard.contains(guess)) {
-                    userBoard.userBoard.remove(guess);
+                    for (int i=0; i<userBoard.userBoard.size(); i++) {
+                        if (userBoard.userBoard.get(i) == guess) {
+                            userBoard.userBoard.remove(i);
+                        }
+                    }
+                    System.out.println("Hit");
+                }
+                else {
+                    System.out.println("Miss");
                 }
                 if (userBoard.userBoard.isEmpty()) {
-                    won = true;
+                    playerWon = true;
                     System.out.println("Congratulations, you win!");
                 }
             }
