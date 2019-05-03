@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -69,5 +70,28 @@ public class UserInterface {
                 playerBoard.add(head+2);
             }
         }
+
+        int count = 1;
+        boolean won = false;
+        Boards userBoard = new Boards();
+
+        while (!won) {
+            if (count%2 > 0) {
+                //call on AI to take turn
+            }
+            else if (count%2 == 0) {
+                System.out.println("Enter a number between 1 and 100 as your guess.");
+                Scanner sc1 = new Scanner(System.in);
+                int guess = sc.nextInt();
+                if (userBoard.userBoard.contains(guess)) {
+                    userBoard.userBoard.remove(guess);
+                }
+                if (userBoard.userBoard.isEmpty()) {
+                    won = true;
+                    System.out.println("Congratulations, you win!");
+                }
+            }
+            count++;
         }
+    }
 }
