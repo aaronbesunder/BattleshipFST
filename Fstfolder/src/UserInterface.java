@@ -95,7 +95,7 @@ public class UserInterface {
             count++;
         }
             } catch (Exception e) {
-                System.out.println("File does not exist");
+                System.out.println("Invalid data");
             }
         }
     }
