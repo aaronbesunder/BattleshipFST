@@ -8,9 +8,6 @@ public class UserInterface {
         System.out.println("Hello! Welcome to battleship.");
         System.out.println("On a 10 by 10 board, you will place five ships with different sizes either vertically or horizontally, without overlaps.");
         ArrayList <Integer> playerBoard = new ArrayList<>();
-        boolean done = false;
-        while (!done) {
-            try {
         System.out.println("The first ship is a 5, type 0 to place it vertically or 1 to place horizontally:");
         Scanner sc = new Scanner(System.in);
             int verthoriz = sc.nextInt();
@@ -93,10 +90,6 @@ public class UserInterface {
                 }
             }
             count++;
-        }
-            } catch (Exception e) {
-                System.out.println("Invalid data");
-            }
         }
     }
 }
