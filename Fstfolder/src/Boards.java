@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 public class Boards {
+    public ArrayList<Integer> userBoard = new ArrayList<>();
     public Boards () {
-
-        ArrayList<Integer> userBoard = new ArrayList<>();
 
         int verthoriz = (int) (Math.random() * 2);
         if (verthoriz == 0) {
