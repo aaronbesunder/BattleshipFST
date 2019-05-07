@@ -13,7 +13,21 @@ public class UserInterface {
         ArrayList <Integer> playerBoard = new ArrayList<>();
         System.out.println("The first ship is a 5, type 0 to place it vertically or 1 to place horizontally:");
         Scanner sc = new Scanner(System.in);
-            int verthoriz = sc.nextInt();
+        int verthoriz=0;
+
+        boolean badData = true;
+        do {
+            try{
+                verthoriz = sc.nextInt();
+                if (verthoriz!=0 && verthoriz!=1) {
+                    throw new IllegalArgumentException();
+                }
+            badData = false;
+        } catch (Exception e) {
+                System.out.println("Enter 0 or 1.");
+        }
+        }while (badData);
+
         if (verthoriz == 0) {
                 System.out.println("Choose a number between 1 and 60 to be the head of the ship.");
                 int head = sc.nextInt();
@@ -34,7 +48,18 @@ public class UserInterface {
 
         for (int i = 0; i < 2; i++) {
             System.out.println("The next ship is a 4, type 0 to place it vertically or 1 to place horizontally");
-            verthoriz = sc.nextInt();
+            badData = true;
+            do {
+                try{
+                    verthoriz = sc.nextInt();
+                    if (verthoriz!=0 && verthoriz!=1) {
+                        throw new IllegalArgumentException();
+                    }
+                    badData = false;
+                } catch (Exception e) {
+                    System.out.println("Enter 0 or 1.");
+                }
+            }while (badData);
             if (verthoriz==0){
                 System.out.println("Choose a number between 1 and 70 to be the head of the ship.");
                 int head = sc.nextInt();
@@ -55,7 +80,18 @@ public class UserInterface {
 
         for (int i = 0; i < 2; i++) {
             System.out.println("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
-            verthoriz = sc.nextInt();
+             badData = true;
+            do {
+                try{
+                    verthoriz = sc.nextInt();
+                    if (verthoriz!=0 && verthoriz!=1) {
+                        throw new IllegalArgumentException();
+                    }
+                    badData = false;
+                } catch (Exception e) {
+                    System.out.println("Enter 0 or 1.");
+                }
+            }while (badData);
             if (verthoriz==0){
                 System.out.println("Choose a number between 1 and 80 to be the head of the ship.");
                 int head = sc.nextInt();
