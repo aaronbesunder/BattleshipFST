@@ -1,10 +1,23 @@
-import java.util.Random;
+import java.util.ArrayList;
 public class AI {
-public static void main (String [] args){
-    int max=100;
-    int min=1;
-    Random randomNum = new Random();
-    int showMe = min + randomNum.nextInt(max);
-    System.out.println(showMe);
-}
+    public int computerGuess;
+    public ArrayList <Integer> guesses = new ArrayList<>();
+    public AI () {
+
+    }
+    public int getComputerGuess() {
+        boolean badData = true;
+        do {
+            try {
+                computerGuess = (int) ((Math.random()*100)+1);
+                if (guesses.contains(computerGuess)) {
+                    throw new IllegalArgumentException();
+                }
+                badData = false;
+            }catch (Exception e) {
+                badData = true;
+            }
+        }while(badData);
+        return computerGuess;
+    }
 }
