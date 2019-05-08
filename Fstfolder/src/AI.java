@@ -18,6 +18,7 @@ public class AI {
                 badData = true;
             }
         }while(badData);
+        guesses.add(computerGuess);
         return computerGuess;
     }
 }
