@@ -15,7 +15,7 @@ public class Boards {
             userBoard.add(head + 40);
             Ship five = new Ship(5, head, head+10, head+20, head+30, head+40);
         } else if (verthoriz == 1) {
-            int column = (int) ((Math.random() * 5) + 1);
+            int column = (int) ((Math.random() * 6) + 1);
             int row = (int) ((Math.random() * 10) + 1);
             int head = ((column * 10) + row);
             userBoard.add(head);
@@ -59,7 +59,7 @@ public class Boards {
                 int head = 0;
                 do {
                     try {
-                        int column = (int) ((Math.random() * 5) + 1);
+                        int column = (int) ((Math.random() * 7) + 1);
                         int row = (int) ((Math.random() * 10) + 1);
                         head = ((column * 10) + row);
                         if (userBoard.contains(head) || userBoard.contains(head + 1) || userBoard.contains(head + 2) || userBoard.contains(head + 3)) {
@@ -115,7 +115,7 @@ public class Boards {
                 int head = 0;
                 do {
                     try {
-                        int column = (int) ((Math.random() * 7) + 1);
+                        int column = (int) ((Math.random() * 8) + 1);
                         int row = (int) ((Math.random() * 10) + 1);
                         head = ((column * 10) + row);
                         if (userBoard.contains(head) || userBoard.contains(head + 1) || userBoard.contains(head + 2)) {
