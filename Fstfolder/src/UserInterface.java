@@ -5,6 +5,8 @@ import java.util.*;
 
 public class UserInterface {
     public static AI computerGuess = new AI();
+    public static int win = 0;
+    public static int count1 = 1;
     public static void main(String[] args) {
 
         Boards userBoard = new Boards();
@@ -105,7 +107,7 @@ public class UserInterface {
                     try {
                         sc = new Scanner(System.in);
                         head = sc.nextInt();
-                        if (head < 1 || head > 70 && playerBoard.contains(head)||playerBoard.contains(head+30)||playerBoard.contains(head+20)||playerBoard.contains(head+10)) {
+                        if (head < 1 || head > 70 || playerBoard.contains(head)||playerBoard.contains(head+30)||playerBoard.contains(head+20)||playerBoard.contains(head+10)) {
                             throw new IllegalArgumentException();
                         }
                         badData = false;
@@ -129,7 +131,7 @@ public class UserInterface {
                         char S = s.charAt(1);
                         String x = Character.toString(S);
                         int letter = Integer.parseInt(x);
-                        if (letter < 1 || letter > 7 || head > 100 && playerBoard.contains(head)||playerBoard.contains(head+3)||playerBoard.contains(head+2)||playerBoard.contains(head+1)) {
+                        if (letter < 1 || letter > 7 || head > 100 || playerBoard.contains(head)||playerBoard.contains(head+3)||playerBoard.contains(head+2)||playerBoard.contains(head+1)) {
                             throw new IllegalArgumentException();
                         }
                         badData = false;
@@ -168,7 +170,7 @@ public class UserInterface {
                     try {
                         sc = new Scanner(System.in);
                         head = sc.nextInt();
-                        if (head < 1 || head > 80 && playerBoard.contains(head)||playerBoard.contains(head+20)||playerBoard.contains(head+10)) {
+                        if (head < 1 || head > 80 || playerBoard.contains(head)||playerBoard.contains(head+20)||playerBoard.contains(head+10)) {
                             throw new IllegalArgumentException();
                         }
                         badData = false;
@@ -191,14 +193,15 @@ public class UserInterface {
                         char S = s.charAt(1);
                         String x = Character.toString(S);
                         int letter = Integer.parseInt(x);
-                        if (letter < 1 || letter > 8 || head > 100&& playerBoard.contains(head)||playerBoard.contains(head+2)||playerBoard.contains(head+1)) {
+                        if (letter < 1 || letter > 8 || head > 100 || playerBoard.contains(head)||playerBoard.contains(head+2)||playerBoard.contains(head+1)) {
                             throw new IllegalArgumentException();
                         }
                         badData = false;
                     } catch (Exception e) {
                         System.out.println("Choose a number between 1 and 100 that ends in 1-8 to be the head of the ship.");
                     }
-                } while (badData);                playerBoard.add(head);
+                } while (badData);
+                playerBoard.add(head);
                 playerBoard.add(head + 1);
                 playerBoard.add(head + 2);
             }
@@ -209,8 +212,9 @@ public class UserInterface {
         boolean computerWon = false;
 
         while (!playerWon & !computerWon) {
-            if (count % 2 > 0) {
+            if (count % 2 == 0) {
                 int cG = computerGuess.getComputerGuess();
+                System.out.println(cG);
                 if (playerBoard.contains(cG)) {
                     for (int i = 0; i < playerBoard.size(); i++) {
                         if (playerBoard.get(i) == cG) {
@@ -218,14 +222,17 @@ public class UserInterface {
                         }
                     }
                     System.out.println("Computer Hit");
-                }else{
+                    win++;
+
+                } else {
                     System.out.println("Computer Miss");
+                    win=0;
                 }
                 if (playerBoard.isEmpty()) {
                     computerWon = true;
                     System.out.println("You lost");
                 }
-            } else if (count % 2 == 0) {
+            } else if (count % 2 > 0) {
                 System.out.println("Enter a number between 1 and 100 as your guess.");
                 int guess = 0;
                 badData = true;
@@ -257,6 +264,14 @@ public class UserInterface {
                 }
             }
             count++;
+            count1++;
         }
+    }
+
+    public static int getWin() {
+        return win;
+    }
+    public static int getCount1() {
+        return count1;
     }
 }
