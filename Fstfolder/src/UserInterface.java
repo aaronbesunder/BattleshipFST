@@ -6,7 +6,7 @@ import java.util.*;
 public class UserInterface {
     public static AI computerGuess = new AI();
     public static int win = 0;
-    public static int count1 = 1;
+    public static ArrayList <Integer> hits = new ArrayList<>();
     public static void main(String[] args) {
 
         Boards userBoard = new Boards();
@@ -222,11 +222,11 @@ public class UserInterface {
                         }
                     }
                     System.out.println("Computer Hit");
+                    hits.add(cG);
                     win++;
 
                 } else {
                     System.out.println("Computer Miss");
-                    win=0;
                 }
                 if (playerBoard.isEmpty()) {
                     computerWon = true;
@@ -264,14 +264,10 @@ public class UserInterface {
                 }
             }
             count++;
-            count1++;
         }
     }
 
     public static int getWin() {
         return win;
-    }
-    public static int getCount1() {
-        return count1;
     }
 }
