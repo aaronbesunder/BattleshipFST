@@ -5,8 +5,9 @@ import java.util.*;
 
 public class UserInterface {
     public static AI computerGuess = new AI();
-    public static int win = 0;
+    public static double win = 0;
     public static ArrayList <Integer> hits = new ArrayList<>();
+    public static ArrayList <Integer> playerForbidden = new ArrayList<>();
     public static void main(String[] args) {
 
         Boards userBoard = new Boards();
@@ -56,6 +57,41 @@ public class UserInterface {
             playerBoard.add(head + 20);
             playerBoard.add(head + 30);
             playerBoard.add(head + 40);
+
+            if ((head-1)%10 == 0) {
+                playerForbidden.add(head - 10);
+                playerForbidden.add(head + 50);
+                playerForbidden.add(head + 1);
+                playerForbidden.add(head + 11);
+                playerForbidden.add(head + 21);
+                playerForbidden.add(head + 31);
+                playerForbidden.add(head + 41);
+            }
+            else if (head%10 == 0) {
+                playerForbidden.add(head - 10);
+                playerForbidden.add(head + 50);
+                playerForbidden.add(head -1);
+                playerForbidden.add(head + 9);
+                playerForbidden.add(head + 19);
+                playerForbidden.add(head + 29);
+                playerForbidden.add(head + 39);
+            }
+            else {
+                playerForbidden.add(head - 10);
+                playerForbidden.add(head + 50);
+                playerForbidden.add(head + 1);
+                playerForbidden.add(head - 1);
+                playerForbidden.add(head + 9);
+                playerForbidden.add(head + 11);
+                playerForbidden.add(head + 19);
+                playerForbidden.add(head + 21);
+                playerForbidden.add(head + 29);
+                playerForbidden.add(head + 31);
+                playerForbidden.add(head + 39);
+                playerForbidden.add(head + 41);
+            }
+
+
         } else if (verthoriz == 1) {
             System.out.println("Choose a number between 1 and 100 that ends in 1-6 to be the head of the ship.");
             int head = 0;
@@ -81,6 +117,39 @@ public class UserInterface {
             playerBoard.add(head + 2);
             playerBoard.add(head + 3);
             playerBoard.add(head + 4);
+
+            if (head>90) {
+                playerForbidden.add(head - 1);
+                playerForbidden.add(head + 5);
+                playerForbidden.add(head - 10);
+                playerForbidden.add(head - 9);
+                playerForbidden.add(head - 8);
+                playerForbidden.add(head - 7);
+                playerForbidden.add(head - 6);
+            }
+            else if (head<10) {
+                playerForbidden.add(head - 1);
+                playerForbidden.add(head + 5);
+                playerForbidden.add(head + 10);
+                playerForbidden.add(head + 11);
+                playerForbidden.add(head + 12);
+                playerForbidden.add(head + 13);
+                playerForbidden.add(head + 14);
+            }
+            else {
+                playerForbidden.add(head - 1);
+                playerForbidden.add(head + 5);
+                playerForbidden.add(head + 10);
+                playerForbidden.add(head - 10);
+                playerForbidden.add(head - 9);
+                playerForbidden.add(head + 11);
+                playerForbidden.add(head - 8);
+                playerForbidden.add(head + 12);
+                playerForbidden.add(head - 7);
+                playerForbidden.add(head + 13);
+                playerForbidden.add(head - 6);
+                playerForbidden.add(head + 14);
+            }
         }
 
         for (int i = 0; i < 2; i++) {
@@ -107,42 +176,108 @@ public class UserInterface {
                     try {
                         sc = new Scanner(System.in);
                         head = sc.nextInt();
-                        if (head < 1 || head > 70 || playerBoard.contains(head)||playerBoard.contains(head+30)||playerBoard.contains(head+20)||playerBoard.contains(head+10)) {
+                        if (head < 1 || head > 70 || playerBoard.contains(head) || playerBoard.contains(head+10)||playerBoard.contains(head+20) || playerBoard.contains(head+30) || playerForbidden.contains(head) || playerBoard.contains(head+10)|| playerForbidden.contains(head+20) || playerForbidden.contains(head+30)) {
                             throw new IllegalArgumentException();
                         }
                         badData = false;
                     } catch (Exception e) {
-                        System.out.println("Choose a number between 1 and 70 to be the head of the ship.");
+                        System.out.println("Choose a number between 1 and 70 to be the head of the ship. Your ships may not touch or overlap.");
                     }
                 } while (badData);
                 playerBoard.add(head);
                 playerBoard.add(head + 10);
                 playerBoard.add(head + 20);
                 playerBoard.add(head + 30);
+
+                if ((head-1)%10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 21);
+                    playerForbidden.add(head + 31);
+                }
+                else if (head%10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head -1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 19);
+                    playerForbidden.add(head + 29);
+                }
+                else {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 19);
+                    playerForbidden.add(head + 21);
+                    playerForbidden.add(head + 29);
+                    playerForbidden.add(head + 31);
+                }
+
+
             } else if (verthoriz == 1) {
                 System.out.println("Choose a number between 1 and 100 that ends in 1-7 to be the head of the ship.");
                 int head = 0;
+                int letter = 0;
                 badData = true;
                 do {
                     try {
                         sc = new Scanner(System.in);
                         head = sc.nextInt();
                         String s = Integer.toString(head);
-                        char S = s.charAt(1);
-                        String x = Character.toString(S);
-                        int letter = Integer.parseInt(x);
-                        if (letter < 1 || letter > 7 || head > 100 || playerBoard.contains(head)||playerBoard.contains(head+3)||playerBoard.contains(head+2)||playerBoard.contains(head+1)) {
+                        if (s.length() == 2) {
+                            char S = s.charAt(1);
+                            String x = Character.toString(S);
+                            letter = Integer.parseInt(x);
+                        }
+                        else if (s.length() == 1) {
+                            letter = head;
+                        }
+                        if (letter < 1 || letter > 7 || head > 100 || playerBoard.contains(head) || playerBoard.contains(head+1) || playerBoard.contains(head+2) || playerBoard.contains(head+3) || playerForbidden.contains(head) || playerForbidden.contains(head+1) || playerForbidden.contains(head+2) || playerForbidden.contains(head+3)) {
                             throw new IllegalArgumentException();
                         }
                         badData = false;
                     } catch (Exception e) {
-                        System.out.println("Choose a number between 1 and 100 that ends in 1-7 to be the head of the ship.");
+                        System.out.println("Choose a number between 1 and 100 that ends in 1-7 to be the head of the ship. Your ships may not touch or overlap.");
                     }
                 } while (badData);
                 playerBoard.add(head);
                 playerBoard.add(head + 1);
                 playerBoard.add(head + 2);
                 playerBoard.add(head + 3);
+
+                if (head>90) {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head - 9);
+                    playerForbidden.add(head - 8);
+                    playerForbidden.add(head - 7);
+                }
+                else if (head<10) {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 10);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 12);
+                    playerForbidden.add(head + 13);
+                }
+                else {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 10);
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head - 9);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head - 8);
+                    playerForbidden.add(head + 12);
+                    playerForbidden.add(head - 7);
+                    playerForbidden.add(head + 13);
+                }
             }
         }
 
@@ -170,40 +305,97 @@ public class UserInterface {
                     try {
                         sc = new Scanner(System.in);
                         head = sc.nextInt();
-                        if (head < 1 || head > 80 || playerBoard.contains(head)||playerBoard.contains(head+20)||playerBoard.contains(head+10)) {
+                        if (head < 1 || head > 80 || playerBoard.contains(head) || playerBoard.contains(head+10) || playerBoard.contains(head+20) || playerForbidden.contains(head) || playerForbidden.contains(head+10) || playerForbidden.contains(head+20)) {
                             throw new IllegalArgumentException();
                         }
                         badData = false;
                     } catch (Exception e) {
-                        System.out.println("Choose a number between 1 and 80 to be the head of the ship.");
+                        System.out.println("Choose a number between 1 and 80 to be the head of the ship. Your ships may not touch or overlap.");
                     }
                 } while (badData);
                 playerBoard.add(head);
                 playerBoard.add(head + 10);
                 playerBoard.add(head + 20);
+
+                if ((head-1)%10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 21);
+                }
+                else if (head%10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head -1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 19);
+                }
+                else {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 19);
+                    playerForbidden.add(head + 21);
+                }
+
             } else if (verthoriz == 1) {
                 System.out.println("Choose a number between 1 and 100 that ends in 1-8 to be the head of the ship.");
                 int head = 0;
+                int letter = 0;
                 badData = true;
                 do {
                     try {
                         sc = new Scanner(System.in);
                         head = sc.nextInt();
                         String s = Integer.toString(head);
-                        char S = s.charAt(1);
-                        String x = Character.toString(S);
-                        int letter = Integer.parseInt(x);
-                        if (letter < 1 || letter > 8 || head > 100 || playerBoard.contains(head)||playerBoard.contains(head+2)||playerBoard.contains(head+1)) {
+                        if (s.length() == 2) {
+                            char S = s.charAt(1);
+                            String x = Character.toString(S);
+                            letter = Integer.parseInt(x);
+                        }
+                        else if (s.length() == 1) {
+                            letter = head;
+                        }
+                        if (letter < 1 || letter > 8 || head > 100 || playerBoard.contains(head) || playerBoard.contains(head+1) || playerBoard.contains(head+2) || playerForbidden.contains(head) || playerForbidden.contains(head+1) || playerForbidden.contains(head+2)) {
                             throw new IllegalArgumentException();
                         }
                         badData = false;
                     } catch (Exception e) {
-                        System.out.println("Choose a number between 1 and 100 that ends in 1-8 to be the head of the ship.");
+                        System.out.println("Choose a number between 1 and 100 that ends in 1-8 to be the head of the ship. Your ships may not touch or overlap.");
                     }
                 } while (badData);
                 playerBoard.add(head);
                 playerBoard.add(head + 1);
                 playerBoard.add(head + 2);
+
+                if (head>90) {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head - 9);
+                    playerForbidden.add(head - 8);
+                }
+                else if (head<10) {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 10);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 12);
+                }
+                else {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 10);
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head - 9);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head - 8);
+                    playerForbidden.add(head + 12);
+                }
             }
         }
 
@@ -267,7 +459,7 @@ public class UserInterface {
         }
     }
 
-    public static int getWin() {
+    public static double getWin() {
         return win;
     }
 }

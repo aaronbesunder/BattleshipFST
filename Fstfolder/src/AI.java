@@ -1,14 +1,17 @@
 import java.util.ArrayList;
+import java.util.Collections;
 public class AI {
     public int computerGuess;
+    public boolean vertical = true;
     public ArrayList <Integer> guesses = new ArrayList<>();
     public AI () {
 
     }
     public int getComputerGuess() {
         boolean badData = true;
-        int w = UserInterface.getWin();
-        if (w==1) {
+        double w = UserInterface.getWin();
+        System.out.println(w);
+        if (w == 1.0) {
             do {
                 try {
                     int rando = (int) ((Math.random() * 4) + 1);
@@ -21,7 +24,7 @@ public class AI {
                     } else if (rando == 4) {
                         computerGuess = UserInterface.hits.get(UserInterface.hits.size()-1) - 1;
                     }
-                    if (guesses.contains(computerGuess)) {
+                    if (guesses.contains(computerGuess) || computerGuess>100) {
                         throw new IllegalArgumentException();
                     }
                     badData = false;
@@ -30,39 +33,48 @@ public class AI {
                 }
             }while (badData);
         }
-        else if (w == 2) {
+        else if (w == 2.0) {
             do {
                 try {
-                    if (UserInterface.hits.get(UserInterface.hits.size() - 1) + 10 == UserInterface.hits.get(UserInterface.hits.size() - 2)) {
-                        int rando1 = (int) (Math.random() * 2);
-                        if (rando1 == 0) {
-                            computerGuess = UserInterface.hits.get(UserInterface.hits.size() - 1) + 20;
-                        } else if (rando1 == 2) {
-                            computerGuess = UserInterface.hits.get(UserInterface.hits.size() - 1) - 10;
+                    Collections.sort(UserInterface.hits);
+                    if (UserInterface.hits.get(UserInterface.hits.size() - 1) - 10 == UserInterface.hits.get(UserInterface.hits.size() - 2)) {
+                        vertical = true;
+                    }
+                    else if (UserInterface.hits.get(UserInterface.hits.size() - 1) - 1 == UserInterface.hits.get(UserInterface.hits.size() - 2)) {
+                        vertical = false;
+                    }
+                    int min = UserInterface.hits.get(0);
+                    if (vertical) {
+                        if (guesses.contains(min+20) && guesses.contains(min-10)) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
                         }
-                    } else if (UserInterface.hits.get(UserInterface.hits.size() - 1) - 10 == UserInterface.hits.get(UserInterface.hits.size() - 2)) {
-                        int rando1 = (int) (Math.random() * 2);
-                        if (rando1 == 0) {
-                            computerGuess = UserInterface.hits.get(UserInterface.hits.size() - 1) + 10;
-                        } else if (rando1 == 2) {
-                            computerGuess = UserInterface.hits.get(UserInterface.hits.size() - 1) - 20;
-                        }
-                    } else if (UserInterface.hits.get(UserInterface.hits.size() - 1) + 1 == UserInterface.hits.get(UserInterface.hits.size() - 2)) {
-                        int rando1 = (int) (Math.random() * 2);
-                        if (rando1 == 0) {
-                            computerGuess = UserInterface.hits.get(UserInterface.hits.size() - 1) + 2;
-                        } else if (rando1 == 2) {
-                            computerGuess = UserInterface.hits.get(UserInterface.hits.size() - 1) - 1;
-                        }
-                    } else if (UserInterface.hits.get(UserInterface.hits.size() - 1) - 1 == UserInterface.hits.get(UserInterface.hits.size() - 2)) {
-                        int rando1 = (int) (Math.random() * 2);
-                        if (rando1 == 0) {
-                            computerGuess = UserInterface.hits.get(UserInterface.hits.size() - 1) + 1;
-                        } else if (rando1 == 2) {
-                            computerGuess = UserInterface.hits.get(UserInterface.hits.size() - 1) - 2;
+                        else {
+                            int rando1 = (int) (Math.random() * 2);
+                            if (rando1 == 0) {
+                                computerGuess = min + 20;
+                            } else if (rando1 == 1) {
+                                computerGuess = min - 10;
+                            }
                         }
                     }
-                    if (guesses.contains(computerGuess)) {
+                    else if (!vertical) {
+                        if (guesses.contains(min+2) && guesses.contains(min-1)) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else {
+                            int rando1 = (int) (Math.random() * 2);
+                            if (rando1 == 0) {
+                                computerGuess = min + 2;
+                            } else if (rando1 == 1) {
+                                computerGuess = min - 1;
+                            }
+                        }
+                    }
+                    if (guesses.contains(computerGuess) || computerGuess>100) {
                         throw new IllegalArgumentException();
                     }
                     badData = false;
@@ -71,10 +83,107 @@ public class AI {
                 }
             } while (badData);
         }
-        else if (w == 3) {
-
+        else if (w == 3.0) {
+            do {
+                try {
+                    Collections.sort(UserInterface.hits);
+                    if (UserInterface.hits.get(UserInterface.hits.size() - 1) - 10 == UserInterface.hits.get(UserInterface.hits.size() - 2)) {
+                        vertical = true;
+                    }
+                    else if (UserInterface.hits.get(UserInterface.hits.size() - 1) - 1 == UserInterface.hits.get(UserInterface.hits.size() - 2)) {
+                        vertical = false;
+                    }
+                    int min = UserInterface.hits.get(0);
+                    if (vertical) {
+                        if (guesses.contains(min+30) && guesses.contains(min-10)) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else {
+                            int rando2 = (int) (Math.random() * 2);
+                            if (rando2 == 0) {
+                                computerGuess = min + 30;
+                            } else if (rando2 == 1) {
+                                computerGuess = min - 10;
+                            }
+                        }
+                    } else if (!vertical) {
+                        if (guesses.contains(min+3) && guesses.contains(min-1)) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else {
+                            int rando2 = (int) (Math.random() * 2);
+                            if (rando2 == 0) {
+                                computerGuess = min + 3;
+                            } else if (rando2 == 1) {
+                                computerGuess = min - 1;
+                            }
+                        }
+                    }
+                    if (guesses.contains(computerGuess) || computerGuess>100) {
+                        throw new IllegalArgumentException();
+                    }
+                    badData = false;
+                }catch (Exception e) {
+                    badData = true;
+                }
+            }while(badData);
         }
-        else if (w == 0) {
+        else if (w == 4.0) {
+            do {
+                try {
+                    Collections.sort(UserInterface.hits);
+                    if (UserInterface.hits.get(UserInterface.hits.size() - 1) - 10 == UserInterface.hits.get(UserInterface.hits.size() - 2)) {
+                        vertical = true;
+                    }
+                    else if (UserInterface.hits.get(UserInterface.hits.size() - 1) - 1 == UserInterface.hits.get(UserInterface.hits.size() - 2)) {
+                        vertical = false;
+                    }
+                    int min = UserInterface.hits.get(0);
+                    if (vertical) {
+                        if (guesses.contains(min+40) && guesses.contains(min-10)) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else {
+                            int rando2 = (int) (Math.random() * 2);
+                            if (rando2 == 0) {
+                                computerGuess = min + 40;
+                            } else if (rando2 == 1) {
+                                computerGuess = min - 10;
+                            }
+                        }
+                    } else if (!vertical) {
+                        if (guesses.contains(min + 4) && guesses.contains(min - 1)) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        } else {
+                            int rando2 = (int) (Math.random() * 2);
+                            if (rando2 == 0) {
+                                computerGuess = min + 4;
+                            } else if (rando2 == 1) {
+                                computerGuess = min - 1;
+                            }
+                        }
+                    }
+                    if (guesses.contains(computerGuess) || computerGuess>100) {
+                        throw new IllegalArgumentException();
+                    }
+                    badData = false;
+                }catch (Exception e) {
+                    badData = true;
+                }
+            }while(badData);
+        }
+        else if (w == 0 | w ==5) {
+            if (w == 5) {
+                UserInterface.win = 0;
+            }
             do {
                 try {
                     computerGuess = (int) ((Math.random() * 100) + 1);
