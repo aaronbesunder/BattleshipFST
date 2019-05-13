@@ -24,7 +24,7 @@ public class AI {
                     } else if (rando == 4) {
                         computerGuess = UserInterface.hits.get(UserInterface.hits.size()-1) - 1;
                     }
-                    if (guesses.contains(computerGuess) || computerGuess>100) {
+                    if (guesses.contains(computerGuess) || computerGuess>100 || computerGuess<1) {
                         throw new IllegalArgumentException();
                     }
                     badData = false;
@@ -45,7 +45,17 @@ public class AI {
                     }
                     int min = UserInterface.hits.get(0);
                     if (vertical) {
-                        if (guesses.contains(min+20) && guesses.contains(min-10)) {
+                        if ((guesses.contains(min+20) && guesses.contains(min-10))) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else if (guesses.contains(min+20) && (min-10)<1) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else if (guesses.contains(min-10) && (min+20)>100) {
                             computerGuess = (int)((Math.random()*100)+1);
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
@@ -60,7 +70,17 @@ public class AI {
                         }
                     }
                     else if (!vertical) {
-                        if (guesses.contains(min+2) && guesses.contains(min-1)) {
+                        if ((guesses.contains(min+2) && guesses.contains(min-1))) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else if (guesses.contains(min+2) && (min-1)<1) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else if (guesses.contains(min-1) && (min+2)>100) {
                             computerGuess = (int)((Math.random()*100)+1);
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
@@ -74,7 +94,7 @@ public class AI {
                             }
                         }
                     }
-                    if (guesses.contains(computerGuess) || computerGuess>100) {
+                    if (guesses.contains(computerGuess) || computerGuess>100 || computerGuess<1) {
                         throw new IllegalArgumentException();
                     }
                     badData = false;
@@ -95,7 +115,17 @@ public class AI {
                     }
                     int min = UserInterface.hits.get(0);
                     if (vertical) {
-                        if (guesses.contains(min+30) && guesses.contains(min-10)) {
+                        if ((guesses.contains(min+30) && guesses.contains(min-10))) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else if (guesses.contains(min+30) && (min-10)<1) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else if (guesses.contains(min-10) && (min+40)>100) {
                             computerGuess = (int)((Math.random()*100)+1);
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
@@ -109,7 +139,17 @@ public class AI {
                             }
                         }
                     } else if (!vertical) {
-                        if (guesses.contains(min+3) && guesses.contains(min-1)) {
+                        if ((guesses.contains(min+3) && guesses.contains(min-1))) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else if (guesses.contains(min+3) && (min-1)<1) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else if (guesses.contains(min-1) && (min+30)>100) {
                             computerGuess = (int)((Math.random()*100)+1);
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
@@ -123,7 +163,7 @@ public class AI {
                             }
                         }
                     }
-                    if (guesses.contains(computerGuess) || computerGuess>100) {
+                    if (guesses.contains(computerGuess) || computerGuess>100 || computerGuess<1) {
                         throw new IllegalArgumentException();
                     }
                     badData = false;
@@ -144,7 +184,17 @@ public class AI {
                     }
                     int min = UserInterface.hits.get(0);
                     if (vertical) {
-                        if (guesses.contains(min+40) && guesses.contains(min-10)) {
+                        if ((guesses.contains(min+40) && guesses.contains(min-10))) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else if (guesses.contains(min-10) && (min+40)>100) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else if (guesses.contains(min+40) && (min-10)<1) {
                             computerGuess = (int)((Math.random()*100)+1);
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
@@ -158,11 +208,22 @@ public class AI {
                             }
                         }
                     } else if (!vertical) {
-                        if (guesses.contains(min + 4) && guesses.contains(min - 1)) {
+                        if ((guesses.contains(min + 4) && guesses.contains(min - 1))) {
                             computerGuess = (int)((Math.random()*100)+1);
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
-                        } else {
+                        }
+                        else if (guesses.contains(min + 4) && (min-1)<1) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else if (guesses.contains(min-1) && (min+4)>100) {
+                            computerGuess = (int)((Math.random()*100)+1);
+                            UserInterface.win = 0;
+                            UserInterface.hits.clear();
+                        }
+                        else {
                             int rando2 = (int) (Math.random() * 2);
                             if (rando2 == 0) {
                                 computerGuess = min + 4;
@@ -171,7 +232,7 @@ public class AI {
                             }
                         }
                     }
-                    if (guesses.contains(computerGuess) || computerGuess>100) {
+                    if (guesses.contains(computerGuess) || computerGuess>100 || computerGuess<1) {
                         throw new IllegalArgumentException();
                     }
                     badData = false;
@@ -183,6 +244,7 @@ public class AI {
         else if (w == 0 | w ==5) {
             if (w == 5) {
                 UserInterface.win = 0;
+                UserInterface.hits.clear();
             }
             do {
                 try {

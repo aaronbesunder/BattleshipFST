@@ -191,7 +191,7 @@ public class UserInterface {
 
                 if ((head-1)%10 == 0) {
                     playerForbidden.add(head - 10);
-                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 40);
                     playerForbidden.add(head + 1);
                     playerForbidden.add(head + 11);
                     playerForbidden.add(head + 21);
@@ -199,7 +199,7 @@ public class UserInterface {
                 }
                 else if (head%10 == 0) {
                     playerForbidden.add(head - 10);
-                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 40);
                     playerForbidden.add(head -1);
                     playerForbidden.add(head + 9);
                     playerForbidden.add(head + 19);
@@ -207,7 +207,7 @@ public class UserInterface {
                 }
                 else {
                     playerForbidden.add(head - 10);
-                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 40);
                     playerForbidden.add(head + 1);
                     playerForbidden.add(head - 1);
                     playerForbidden.add(head + 9);
@@ -252,7 +252,7 @@ public class UserInterface {
 
                 if (head>90) {
                     playerForbidden.add(head - 1);
-                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 4);
                     playerForbidden.add(head - 10);
                     playerForbidden.add(head - 9);
                     playerForbidden.add(head - 8);
@@ -260,7 +260,7 @@ public class UserInterface {
                 }
                 else if (head<10) {
                     playerForbidden.add(head - 1);
-                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 4);
                     playerForbidden.add(head + 10);
                     playerForbidden.add(head + 11);
                     playerForbidden.add(head + 12);
@@ -268,7 +268,7 @@ public class UserInterface {
                 }
                 else {
                     playerForbidden.add(head - 1);
-                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 4);
                     playerForbidden.add(head + 10);
                     playerForbidden.add(head - 10);
                     playerForbidden.add(head - 9);
@@ -319,21 +319,21 @@ public class UserInterface {
 
                 if ((head-1)%10 == 0) {
                     playerForbidden.add(head - 10);
-                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 30);
                     playerForbidden.add(head + 1);
                     playerForbidden.add(head + 11);
                     playerForbidden.add(head + 21);
                 }
                 else if (head%10 == 0) {
                     playerForbidden.add(head - 10);
-                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 30);
                     playerForbidden.add(head -1);
                     playerForbidden.add(head + 9);
                     playerForbidden.add(head + 19);
                 }
                 else {
                     playerForbidden.add(head - 10);
-                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 30);
                     playerForbidden.add(head + 1);
                     playerForbidden.add(head - 1);
                     playerForbidden.add(head + 9);
@@ -374,21 +374,21 @@ public class UserInterface {
 
                 if (head>90) {
                     playerForbidden.add(head - 1);
-                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 3);
                     playerForbidden.add(head - 10);
                     playerForbidden.add(head - 9);
                     playerForbidden.add(head - 8);
                 }
                 else if (head<10) {
                     playerForbidden.add(head - 1);
-                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 3);
                     playerForbidden.add(head + 10);
                     playerForbidden.add(head + 11);
                     playerForbidden.add(head + 12);
                 }
                 else {
                     playerForbidden.add(head - 1);
-                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 3);
                     playerForbidden.add(head + 10);
                     playerForbidden.add(head - 10);
                     playerForbidden.add(head - 9);
