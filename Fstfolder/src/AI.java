@@ -45,45 +45,19 @@ public class AI {
                     }
                     int min = UserInterface.hits.get(0);
                     if (vertical) {
-                        if ((guesses.contains(min+20) && guesses.contains(min-10))) {
-                            computerGuess = (int)((Math.random()*100)+1);
-                            UserInterface.win = 0;
-                            UserInterface.hits.clear();
-                        }
-                        else if (guesses.contains(min+20) && (min-10)<1) {
-                            computerGuess = (int)((Math.random()*100)+1);
-                            UserInterface.win = 0;
-                            UserInterface.hits.clear();
-                        }
-                        else if (guesses.contains(min-10) && (min+20)>100) {
-                            computerGuess = (int)((Math.random()*100)+1);
-                            UserInterface.win = 0;
-                            UserInterface.hits.clear();
-                        }
-                        else {
-                            int rando1 = (int) (Math.random() * 2);
-                            if (rando1 == 0) {
-                                computerGuess = min + 20;
-                            } else if (rando1 == 1) {
-                                computerGuess = min - 10;
-                            }
+                        int rando1 = (int) (Math.random() * 2);
+                        if (rando1 == 0) {
+                            computerGuess = min + 20;
+                        } else if (rando1 == 1) {
+                            computerGuess = min - 10;
                         }
                     }
                     else if (!vertical) {
-                        if ((guesses.contains(min+2) && guesses.contains(min-1))) {
-                            computerGuess = (int)((Math.random()*100)+1);
-                            UserInterface.win = 0;
-                            UserInterface.hits.clear();
+                        if (!guesses.contains(min+2) && ((min-1)%10 ==0)) {
+                            computerGuess = min+2;
                         }
-                        else if (guesses.contains(min+2) && (min-1)<1) {
-                            computerGuess = (int)((Math.random()*100)+1);
-                            UserInterface.win = 0;
-                            UserInterface.hits.clear();
-                        }
-                        else if (guesses.contains(min-1) && (min+2)>100) {
-                            computerGuess = (int)((Math.random()*100)+1);
-                            UserInterface.win = 0;
-                            UserInterface.hits.clear();
+                        else if (!guesses.contains(min-1) && ((min+1)%10 ==0)) {
+                            computerGuess = min-1;
                         }
                         else {
                             int rando1 = (int) (Math.random() * 2);
@@ -94,6 +68,7 @@ public class AI {
                             }
                         }
                     }
+                    System.out.println(computerGuess);
                     if (guesses.contains(computerGuess) || computerGuess>100 || computerGuess<1) {
                         throw new IllegalArgumentException();
                     }
@@ -144,15 +119,21 @@ public class AI {
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
                         }
-                        else if (guesses.contains(min+3) && (min-1)<1) {
+                        else if (guesses.contains(min+3) && ((min-1)%10 == 0)) {
                             computerGuess = (int)((Math.random()*100)+1);
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
                         }
-                        else if (guesses.contains(min-1) && (min+30)>100) {
+                        else if (guesses.contains(min-1) && ((min+2)%10 == 0)) {
                             computerGuess = (int)((Math.random()*100)+1);
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
+                        }
+                        else if (!guesses.contains(min+3) && ((min-1)%10 ==0)) {
+                            computerGuess = min+3;
+                        }
+                        else if (!guesses.contains(min-1) && ((min+2)%10 ==0)) {
+                            computerGuess = min-1;
                         }
                         else {
                             int rando2 = (int) (Math.random() * 2);
@@ -163,6 +144,7 @@ public class AI {
                             }
                         }
                     }
+                    System.out.println(computerGuess);
                     if (guesses.contains(computerGuess) || computerGuess>100 || computerGuess<1) {
                         throw new IllegalArgumentException();
                     }
@@ -213,15 +195,21 @@ public class AI {
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
                         }
-                        else if (guesses.contains(min + 4) && (min-1)<1) {
+                        else if (guesses.contains(min + 4) && ((min-1)%10 == 0)) {
                             computerGuess = (int)((Math.random()*100)+1);
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
                         }
-                        else if (guesses.contains(min-1) && (min+4)>100) {
+                        else if (guesses.contains(min-1) && ((min+3)%10 == 0)) {
                             computerGuess = (int)((Math.random()*100)+1);
                             UserInterface.win = 0;
                             UserInterface.hits.clear();
+                        }
+                        else if (!guesses.contains(min+4) && ((min-1)%10 == 0)) {
+                            computerGuess = min+4;
+                        }
+                        else if (!guesses.contains(min-1) && ((min+3)%10 == 0)) {
+                            computerGuess = min-1;
                         }
                         else {
                             int rando2 = (int) (Math.random() * 2);
@@ -232,6 +220,7 @@ public class AI {
                             }
                         }
                     }
+                    System.out.println(computerGuess);
                     if (guesses.contains(computerGuess) || computerGuess>100 || computerGuess<1) {
                         throw new IllegalArgumentException();
                     }
