@@ -104,7 +104,7 @@ public class UserInterface {
                     char S = s.charAt(1);
                     String x = Character.toString(S);
                     int letter = Integer.parseInt(x);
-                    if (letter < 1 || letter > 6 || head > 100) {
+                    if (letter < 1 || letter > 6 || head > 100 || head < 1) {
                         throw new IllegalArgumentException();
                     }
                     badData = false;
@@ -237,7 +237,7 @@ public class UserInterface {
                         else if (s.length() == 1) {
                             letter = head;
                         }
-                        if (letter < 1 || letter > 7 || head > 100 || playerBoard.contains(head) || playerBoard.contains(head+1) || playerBoard.contains(head+2) || playerBoard.contains(head+3) || playerForbidden.contains(head) || playerForbidden.contains(head+1) || playerForbidden.contains(head+2) || playerForbidden.contains(head+3)) {
+                        if (letter < 1 || letter > 7 || head > 100 || head < 1 || playerBoard.contains(head) || playerBoard.contains(head+1) || playerBoard.contains(head+2) || playerBoard.contains(head+3) || playerForbidden.contains(head) || playerForbidden.contains(head+1) || playerForbidden.contains(head+2) || playerForbidden.contains(head+3)) {
                             throw new IllegalArgumentException();
                         }
                         badData = false;
@@ -360,7 +360,7 @@ public class UserInterface {
                         else if (s.length() == 1) {
                             letter = head;
                         }
-                        if (letter < 1 || letter > 8 || head > 100 || playerBoard.contains(head) || playerBoard.contains(head+1) || playerBoard.contains(head+2) || playerForbidden.contains(head) || playerForbidden.contains(head+1) || playerForbidden.contains(head+2)) {
+                        if (letter < 1 || letter > 8 || head > 100 || head < 1 || playerBoard.contains(head) || playerBoard.contains(head+1) || playerBoard.contains(head+2) || playerForbidden.contains(head) || playerForbidden.contains(head+1) || playerForbidden.contains(head+2)) {
                             throw new IllegalArgumentException();
                         }
                         badData = false;
