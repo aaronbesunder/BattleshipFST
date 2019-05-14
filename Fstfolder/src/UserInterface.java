@@ -95,15 +95,21 @@ public class UserInterface {
         } else if (verthoriz == 1) { //5 ship horizontal
             System.out.println("Choose a number between 1 and 100 that ends in 1-6 to be the head of the ship.");
             int head = 0;
+            int letter = 0;
             badData = true;
             do {
                 try {
                     sc = new Scanner(System.in);
                     head = sc.nextInt();
                     String s = Integer.toString(head);
-                    char S = s.charAt(1);
-                    String x = Character.toString(S);
-                    int letter = Integer.parseInt(x);
+                    if (s.length() == 2) {
+                        char S = s.charAt(1);
+                        String x = Character.toString(S);
+                        letter = Integer.parseInt(x);
+                    }
+                    else if (s.length() == 1) {
+                        letter = head;
+                    }
                     if (letter < 1 || letter > 6 || head > 100 || head < 1) {
                         throw new IllegalArgumentException();
                     }
