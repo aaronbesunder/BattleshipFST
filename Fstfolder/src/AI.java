@@ -11,7 +11,7 @@ public class AI {
         boolean badData = true;
         double w = UserInterface.getWin();
         System.out.println(w);
-        if (w == 1.0) {
+        if (w == 1.0) { //win is 1
             do {
                 try {
                     int rando = (int) ((Math.random() * 4) + 1);
@@ -33,7 +33,7 @@ public class AI {
                 }
             }while (badData);
         }
-        else if (w == 2.0) {
+        else if (w == 2.0) { //win is 2
             do {
                 try {
                     Collections.sort(UserInterface.hits);
@@ -103,7 +103,7 @@ public class AI {
                 }
             } while (badData);
         }
-        else if (w == 3.0) {
+        else if (w == 3.0) { //win is 3
             do {
                 try {
                     Collections.sort(UserInterface.hits);
@@ -172,7 +172,7 @@ public class AI {
                 }
             }while(badData);
         }
-        else if (w == 4.0) {
+        else if (w == 4.0) { //win is 4
             do {
                 try {
                     Collections.sort(UserInterface.hits);
@@ -241,7 +241,7 @@ public class AI {
                 }
             }while(badData);
         }
-        else if (w == 0 | w ==5) {
+        else if (w == 0 | w ==5) { //win is 0 or 5
             if (w == 5) {
                 UserInterface.win = 0;
                 UserInterface.hits.clear();

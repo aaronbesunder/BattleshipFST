@@ -13,7 +13,7 @@ public class UserInterface {
         Boards userBoard = new Boards();
         System.out.println(userBoard.userBoard);
 
-        System.out.println("Hello! Welcome to battleship.");
+        System.out.println("Hello! Welcome to battleship."); //instructions
         System.out.println("On a 10 by 10 board, you will place five ships with different sizes either vertically or horizontally, without overlaps.");
         ArrayList<Integer> playerBoard = new ArrayList<>();
         System.out.println("The first ship is a 5, type 0 to place it vertically or 1 to place horizontally:");
@@ -35,7 +35,7 @@ public class UserInterface {
             }
         } while (badData);
 
-        if (verthoriz == 0) {
+        if (verthoriz == 0) { //5 ship vertical
             System.out.println("Choose a number between 1 and 60 to be the head of the ship.");
             int head = 0;
             badData = true;
@@ -92,7 +92,7 @@ public class UserInterface {
             }
 
 
-        } else if (verthoriz == 1) {
+        } else if (verthoriz == 1) { //5 ship horizontal
             System.out.println("Choose a number between 1 and 100 that ends in 1-6 to be the head of the ship.");
             int head = 0;
             badData = true;
@@ -152,7 +152,7 @@ public class UserInterface {
             }
         }
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) { //4 ships
             System.out.println("The next ship is a 4, type 0 to place it vertically or 1 to place horizontally");
             badData = true;
             do {
@@ -168,7 +168,7 @@ public class UserInterface {
 
                 }
             } while (badData);
-            if (verthoriz == 0) {
+            if (verthoriz == 0) { //vertical
                 System.out.println("Choose a number between 1 and 70 to be the head of the ship.");
                 int head = 0;
                 badData = true;
@@ -219,7 +219,7 @@ public class UserInterface {
                 }
 
 
-            } else if (verthoriz == 1) {
+            } else if (verthoriz == 1) { //horizontal
                 System.out.println("Choose a number between 1 and 100 that ends in 1-7 to be the head of the ship.");
                 int head = 0;
                 int letter = 0;
@@ -281,7 +281,7 @@ public class UserInterface {
             }
         }
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) { //3 ships
             System.out.println("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
             badData = true;
             do {
@@ -297,7 +297,7 @@ public class UserInterface {
 
                 }
             } while (badData);
-            if (verthoriz == 0) {
+            if (verthoriz == 0) { //vertical
                 System.out.println("Choose a number between 1 and 80 to be the head of the ship.");
                 int head = 0;
                 badData = true;
@@ -342,7 +342,7 @@ public class UserInterface {
                     playerForbidden.add(head + 21);
                 }
 
-            } else if (verthoriz == 1) {
+            } else if (verthoriz == 1) { //horizontal
                 System.out.println("Choose a number between 1 and 100 that ends in 1-8 to be the head of the ship.");
                 int head = 0;
                 int letter = 0;
@@ -403,8 +403,8 @@ public class UserInterface {
         boolean playerWon = false;
         boolean computerWon = false;
 
-        while (!playerWon & !computerWon) {
-            if (count % 2 == 0) {
+        while (!playerWon & !computerWon) { //game
+            if (count % 2 == 0) { //computer turn
                 int cG = computerGuess.getComputerGuess();
                 System.out.println(cG);
                 if (playerBoard.contains(cG)) {
@@ -424,7 +424,7 @@ public class UserInterface {
                     computerWon = true;
                     System.out.println("You lost");
                 }
-            } else if (count % 2 > 0) {
+            } else if (count % 2 > 0) { //player turn
                 System.out.println("Enter a number between 1 and 100 as your guess.");
                 int guess = 0;
                 badData = true;
