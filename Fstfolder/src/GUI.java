@@ -3,11 +3,60 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.shape.*;
+
+import java.util.ArrayList;
 
 public class GUI extends Application {
-    Button button;
+    public static AI computerGuess = new AI();
+    public static double win = 0;
+    public static ArrayList <Integer> hits = new ArrayList<>();
+    public static ArrayList <Integer> playerForbidden = new ArrayList<>();
+    Image background= new Image("background.jpg");
+    ImageView backgroundView = new ImageView(background);
+    Button startButton;
+    Button quitButton;
+    Rectangle box=new Rectangle(0,0,750,500);
+    Line horizLine=new Line(0,0,750,0);
+    Line horizLine2=new Line(0, 0,750,0);
+    Line horizLine3=new Line(0,0,750,0);
+    Line horizLine4=new Line(0,0,750,0);
+    Line horizLine5=new Line(0,0,750,0);
+    Line horizLine6=new Line(0,0,750,0);
+    Line horizLine7=new Line(0,0,750,0);
+    Line horizLine8=new Line(0,0,750,0);
+    Line horizLine9= new Line (0,0,750,0);
+    Line horizLine10= new Line(0,0,750,0);
+    Line vertLine= new Line(0,-400,0,100);
+    Line vertLine2= new Line(0,-400,0,100);
+    Line vertLine3= new Line(0,-400,0,100);
+    Line vertLine4= new Line(0,-400,0,100);
+    Line vertLine5= new Line(0,-400,0,100);
+    Line vertLine6= new Line(0,-400,0,100);
+    Line vertLine7= new Line(0,-400,0,100);
+    Line vertLine8= new Line(0,-400,0,100);
+    Line vertLine9= new Line(0,-400,0,100);
+    Line vertLine10= new Line(0,-400,0,100);
+    Boards userBoard = new Boards();
+    ArrayList<Integer> playerBoard = new ArrayList<>();
+    int loopCount4=0;
+    int loopCount3=0;
+
+
+
+    Scene scene, scene1;
+
     public static void main(String[] args) {
         launch (args);
     }
@@ -15,14 +64,598 @@ public class GUI extends Application {
     public void start (Stage primaryStage)throws Exception{
         primaryStage.setTitle("Window Title");
 
-        button=new Button();
-        button.setText("Click Here");
-
+        startButton=new Button();
+        startButton.setText("Start");
+        quitButton= new Button();
+        quitButton.setText("Quit");
+        quitButton.setTranslateY(100);
+        backgroundView.setFitHeight(600);
+        backgroundView.setFitWidth(800);
+        box.setFill(Color.WHITE);
+        box.setStroke(Color.BLACK);
+        box.setTranslateY(-50);
+        horizLine.setTranslateY(-250);
+        horizLine2.setTranslateY(-200);
+        horizLine3.setTranslateY(-150);
+        horizLine4.setTranslateY(-100);
+        horizLine5.setTranslateY(-50);
+        horizLine6.setTranslateY(0);
+        horizLine7.setTranslateY(50);
+        horizLine8.setTranslateY(100);
+        horizLine9.setTranslateY(150);
+        horizLine10.setTranslateY(200);
+        vertLine.setTranslateY(-50);
+        vertLine2.setTranslateY(-50);
+        vertLine3.setTranslateY(-50);
+        vertLine4.setTranslateY(-50);
+        vertLine5.setTranslateY(-50);
+        vertLine6.setTranslateY(-50);
+        vertLine7.setTranslateY(-50);
+        vertLine8.setTranslateY(-50);
+        vertLine9.setTranslateY(-50);
+        vertLine10.setTranslateY(-50);
+        vertLine.setTranslateX(-300);
+        vertLine2.setTranslateX(-225);
+        vertLine3.setTranslateX(-150);
+        vertLine4.setTranslateX(-75);
+        vertLine5.setTranslateX(0);
+        vertLine6.setTranslateX(75);
+        vertLine7.setTranslateX(150);
+        vertLine8.setTranslateX(225);
+        vertLine9.setTranslateX(300);
+        vertLine10.setTranslateX(375);
+        TextField placeShip=new TextField();
+        Button enter= new Button();
+        Button enter2=new Button();
+        Button enter3=new Button();
+        Button enter4=new Button();
+        Button enter5=new Button();
+        Button enter6=new Button();
+        Button enter7=new Button();
+        Button enter8=new Button();
+        Button enter9=new Button();
+        Button startGame=new Button();
+        enter.setText("Enter");
+        enter.setTranslateY(250);
+        enter2.setText("Enter2");
+        enter2.setTranslateY(250);
+        enter3.setText("Enter3");
+        enter3.setTranslateY(250);
+        enter4.setText("Enter4");
+        enter4.setTranslateY(250);
+        enter5.setText("Enter5");
+        enter5.setTranslateY(250);
+        enter6.setText("Enter6");
+        enter6.setTranslateY(250);
+        enter7.setText("Enter7");
+        enter7.setTranslateY(250);
+        enter8.setText("Enter8");
+        enter8.setTranslateY(250);
+        enter9.setText("Enter9");
+        enter9.setTranslateY(250);
+        Button testButton=new Button();
+        testButton.setMaxWidth(60);
+        startGame.setText("Start Game");
+        startGame.setTranslateY(250);
+        placeShip.maxWidth(50);
+        placeShip.setTranslateY(225);
+        Label prompt= new Label();
+        prompt.setFont(new Font("Arial",20));
+        prompt.setTranslateY(-25);
+        prompt.setText("The first ship is a 5, type 0 to place it vertically or 1 to place horizontally:");
         StackPane layout=new StackPane();
-        layout.getChildren().add(button);
+        StackPane layout1=new StackPane();
+        scene = new Scene(layout,800,600);
+        scene1=new Scene(layout1,800,600);
+        layout.getChildren().addAll(backgroundView,startButton,quitButton);
+        layout1.getChildren().addAll(box,horizLine,horizLine2,horizLine3,horizLine4,horizLine5,horizLine6,horizLine7,horizLine8,horizLine9,horizLine10,vertLine,vertLine2,vertLine3,vertLine4,vertLine5,vertLine6,vertLine7,vertLine8,vertLine9,vertLine10,enter,placeShip,prompt);
+        layout1.getChildren().add(testButton);
+        enter.setOnAction(e->{
+            int vertHoriz=0;
+                try {
+                    vertHoriz=Integer.parseInt(placeShip.getText());
+                    if(vertHoriz!=0&&vertHoriz!=1){
+                        throw new IllegalArgumentException();
+                    }
+                    if (vertHoriz==0) {
+                        layout1.getChildren().remove(enter);
+                        layout1.getChildren().add(enter2);
+                        prompt.setText("Choose a number between 1 and 60 to be the head of the ship.");
+                    }
+                    if (vertHoriz==1) {
+                        layout1.getChildren().remove(enter);
+                        layout1.getChildren().add(enter3);
+                        prompt.setText("Choose a number between 1 and 100 that ends in 1-6 to be the head.");
 
-        Scene scene=new Scene(layout, 800, 640);
+                    }
+
+
+                    placeShip.clear();
+
+                }catch (Exception ex){
+                    prompt.setText("Enter a 0 or 1");
+                }
+                }
+                );
+        enter2.setOnAction(e->{
+            int head=0;
+            try{
+                head= Integer.parseInt(placeShip.getText());
+                if (head <1||head>60){
+                    throw new IllegalArgumentException();
+                }
+
+                playerBoard.add(head);
+                playerBoard.add(head + 10);
+                playerBoard.add(head + 20);
+                playerBoard.add(head + 30);
+                playerBoard.add(head + 40);
+
+                if ((head-1)%10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 21);
+                    playerForbidden.add(head + 31);
+                    playerForbidden.add(head + 41);
+                }
+                else if (head%10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head -1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 19);
+                    playerForbidden.add(head + 29);
+                    playerForbidden.add(head + 39);
+                }
+                else {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 50);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 19);
+                    playerForbidden.add(head + 21);
+                    playerForbidden.add(head + 29);
+                    playerForbidden.add(head + 31);
+                    playerForbidden.add(head + 39);
+                    playerForbidden.add(head + 41);
+                }
+                placeShip.clear();
+                layout1.getChildren().remove(enter2);
+                layout1.getChildren().add(enter4);
+                prompt.setText("The next ship is a 4, type 0 to place it vertically or 1 to place horizontally");
+                System.out.println(playerBoard);
+                System.out.println(playerForbidden);
+            }catch (Exception ex){
+                prompt.setText("Please choose a number in the correct range (1-60)");
+            }
+        });
+
+        enter3.setOnAction(e->{
+            int head=0;
+            int test=0;
+            try{
+                test=Integer.parseInt(placeShip.getText());
+                String s= Integer.toString(test);
+                int letter=0;
+                if(s.length()==2) {
+                    char S = s.charAt(1);
+                    String x = Character.toString(S);
+                    letter = Integer.parseInt(x);
+                    head=test;
+                }
+                else if(s.length()==1){
+                    letter=test;
+                    head=test;
+
+                }
+                if (letter<1||letter>6||head>100||head<1){
+                    throw new IllegalArgumentException();
+                }
+                head=test;
+
+                playerBoard.add(head);
+                playerBoard.add(head + 1);
+                playerBoard.add(head + 2);
+                playerBoard.add(head + 3);
+                playerBoard.add(head + 4);
+
+                if (head>90) {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head - 9);
+                    playerForbidden.add(head - 8);
+                    playerForbidden.add(head - 7);
+                    playerForbidden.add(head - 6);
+                }
+                else if (head<10) {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 10);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 12);
+                    playerForbidden.add(head + 13);
+                    playerForbidden.add(head + 14);
+                }
+                else {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 5);
+                    playerForbidden.add(head + 10);
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head - 9);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head - 8);
+                    playerForbidden.add(head + 12);
+                    playerForbidden.add(head - 7);
+                    playerForbidden.add(head + 13);
+                    playerForbidden.add(head - 6);
+                    playerForbidden.add(head + 14);
+                }
+                placeShip.clear();
+                layout1.getChildren().remove(enter3);
+                layout1.getChildren().add(enter4);
+                prompt.setText("The next ship is a 4, type 0 to place it vertically or 1 to place horizontally");
+                System.out.println(playerBoard);
+                System.out.println(playerForbidden);
+            }catch (Exception ex){
+                prompt.setText("Enter a valid number (1-100 ending in 1-6)");
+            }
+        });
+        enter4.setOnAction(e->{
+            int vertHoriz=0;
+            try {
+                vertHoriz=Integer.parseInt(placeShip.getText());
+                if(vertHoriz!=0&&vertHoriz!=1){
+                    throw new IllegalArgumentException();
+                }
+                if (vertHoriz==0) {
+                    layout1.getChildren().remove(enter4);
+                    layout1.getChildren().add(enter5);
+                    prompt.setText("Choose a number between 1 and 70 to be the head of the ship.");
+                    vertHoriz=0;
+                }
+                if (vertHoriz==1) {
+                    layout1.getChildren().remove(enter4);
+                    layout1.getChildren().add(enter6);
+                    prompt.setText("Choose a number between 1 and 100 that ends in 1-7 to be the head.");
+                    vertHoriz=0;
+
+                }
+
+
+                placeShip.clear();
+
+            }catch (Exception ex){
+                prompt.setText("Enter a 0 or 1");
+            }
+
+        });
+
+        enter5.setOnAction(e->{
+            int head=0;
+            try{
+               head=Integer.parseInt(placeShip.getText());
+                if (head < 1 || head > 70 || playerBoard.contains(head) || playerBoard.contains(head+10)||playerBoard.contains(head+20) || playerBoard.contains(head+30) || playerForbidden.contains(head) || playerBoard.contains(head+10)|| playerForbidden.contains(head+20) || playerForbidden.contains(head+30)) {
+                    throw new IllegalArgumentException();
+                }
+
+                playerBoard.add(head);
+                playerBoard.add(head + 10);
+                playerBoard.add(head + 20);
+                playerBoard.add(head + 30);
+
+                if ((head-1)%10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 40);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 21);
+                    playerForbidden.add(head + 31);
+                }
+                else if (head%10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 40);
+                    playerForbidden.add(head -1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 19);
+                    playerForbidden.add(head + 29);
+                }
+                else {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 40);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 19);
+                    playerForbidden.add(head + 21);
+                    playerForbidden.add(head + 29);
+                    playerForbidden.add(head + 31);
+                }
+                head=0;
+                placeShip.clear();
+                loopCount4++;
+                if(loopCount4<2) {
+                    layout1.getChildren().remove(enter5);
+                    layout1.getChildren().add(enter4);
+                    prompt.setText("The next ship is a 4, type 0 to place it vertically or 1 to place horizontally");
+                    System.out.println(playerBoard);
+                    System.out.println(playerForbidden);
+                }
+                else if(loopCount4>=2){
+                    layout1.getChildren().remove(enter5);
+                    layout1.getChildren().add(enter7);
+                    prompt.setText("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
+                    System.out.println(playerBoard);
+                    System.out.println(playerForbidden);
+                }
+            }catch (Exception ex){
+                prompt.setText("Enter a valid number. Your ships may not touch or overlap.");
+            }
+
+
+        });
+        enter6.setOnAction(e->{
+            int head=0;
+            int test=0;
+            int letter=0;
+            try {
+                test = Integer.parseInt(placeShip.getText());
+                String s = Integer.toString(test);
+                if(s.length()==2) {
+                    char S = s.charAt(1);
+                    String x = Character.toString(S);
+                    letter = Integer.parseInt(x);
+                    head=test;
+                }
+                else if(s.length()==1){
+                    letter=test;
+                    head=test;
+
+                }
+                if (letter < 1 || letter > 7 || head > 100 || head < 1 || playerBoard.contains(head) || playerBoard.contains(head+1) || playerBoard.contains(head+2) || playerBoard.contains(head+3) || playerForbidden.contains(head) || playerForbidden.contains(head+1) || playerForbidden.contains(head+2) || playerForbidden.contains(head+3)) {
+                    throw new IllegalArgumentException();
+                }
+
+                head = test;
+                playerBoard.add(head);
+                playerBoard.add(head + 1);
+                playerBoard.add(head + 2);
+                playerBoard.add(head + 3);
+
+                if (head>90) {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 4);
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head - 9);
+                    playerForbidden.add(head - 8);
+                    playerForbidden.add(head - 7);
+                }
+                else if (head<10) {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 4);
+                    playerForbidden.add(head + 10);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 12);
+                    playerForbidden.add(head + 13);
+                }
+                else {
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 4);
+                    playerForbidden.add(head + 10);
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head - 9);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head - 8);
+                    playerForbidden.add(head + 12);
+                    playerForbidden.add(head - 7);
+                    playerForbidden.add(head + 13);
+                }
+                head=0;
+                test=0;
+                placeShip.clear();
+                loopCount4++;
+                if(loopCount4<2) {
+                    layout1.getChildren().remove(enter5);
+                    layout1.getChildren().add(enter4);
+                    prompt.setText("The next ship is a 4, type 0 to place it vertically or 1 to place horizontally");
+                    System.out.println(playerBoard);
+                    System.out.println(playerForbidden);
+                }
+                else if(loopCount4>=2){
+                    layout1.getChildren().remove(enter6);
+                    layout1.getChildren().add(enter7);
+                    prompt.setText("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
+                    System.out.println(playerBoard);
+                    System.out.println(playerForbidden);
+                }
+            }catch (Exception ex){
+                prompt.setText("Enter a valid number. Ships cannot touch or overlap");
+            }
+
+        });
+        enter7.setOnAction(e->{
+            int vertHoriz=0;
+            try {
+                vertHoriz=Integer.parseInt(placeShip.getText());
+                if(vertHoriz!=0&&vertHoriz!=1){
+                    throw new IllegalArgumentException();
+                }
+                if (vertHoriz==0) {
+                    layout1.getChildren().remove(enter7);
+                    layout1.getChildren().add(enter8);
+                    prompt.setText("Choose a number between 1 and 80 to be the head of the ship.");
+                    vertHoriz=0;
+                }
+                if (vertHoriz==1) {
+                    layout1.getChildren().remove(enter7);
+                    layout1.getChildren().add(enter9);
+                    prompt.setText("Choose a number between 1 and 100 that ends in 1-8 to be the head.");
+                    vertHoriz=0;
+
+                }
+
+
+                placeShip.clear();
+
+            }catch (Exception ex){
+                prompt.setText("Enter a 0 or 1");
+            }
+        });
+        enter8.setOnAction(e-> {
+            int head = 0;
+            try {
+
+
+                head = Integer.parseInt(placeShip.getText());
+                if (head < 1 || head > 80 || playerBoard.contains(head) || playerBoard.contains(head + 10) || playerBoard.contains(head + 20) || playerForbidden.contains(head) || playerForbidden.contains(head + 10) || playerForbidden.contains(head + 20)) {
+                    throw new IllegalArgumentException();
+                }
+
+                playerBoard.add(head);
+                playerBoard.add(head + 10);
+                playerBoard.add(head + 20);
+
+                if ((head - 1) % 10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 30);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 21);
+                } else if (head % 10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 30);
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 19);
+                } else {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 30);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 19);
+                    playerForbidden.add(head + 21);
+                }
+
+
+            head=0;
+            loopCount3++;
+            if(loopCount3<2) {
+                layout1.getChildren().remove(enter8);
+                layout1.getChildren().remove(placeShip);
+                layout1.getChildren().add(enter7);
+                prompt.setText("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
+                System.out.println(playerBoard);
+                System.out.println(playerForbidden);
+            }
+            else if(loopCount4>=2){
+                layout1.getChildren().remove(enter8);
+                layout1.getChildren().remove(placeShip);
+                layout1.getChildren().add(startGame);
+                System.out.println(playerBoard);
+                System.out.println(playerForbidden);
+            }
+            }catch (Exception ex){
+                prompt.setText("Enter a valid number. Your ships may not touch or overlap.");
+            }
+
+        });
+        enter9.setOnAction(e->{
+            int head=0;
+            int test=0;
+            int letter=0;
+            try {
+                test = Integer.parseInt(placeShip.getText());
+                String s = Integer.toString(test);
+                if (s.length() == 2) {
+                    char S = s.charAt(1);
+                    String x = Character.toString(S);
+                    letter = Integer.parseInt(x);
+                    head=test;
+                } else if (s.length() == 1) {
+                    letter = test;
+                    head = test;
+
+                }
+                if (letter < 1 || letter > 8 || head > 100 ||head<1|| playerBoard.contains(head) || playerBoard.contains(head + 1) || playerBoard.contains(head + 2) || playerForbidden.contains(head) || playerForbidden.contains(head + 1) || playerForbidden.contains(head + 2)) {
+                    throw new IllegalArgumentException();
+                }
+
+                head = test;
+
+                playerBoard.add(head);
+                playerBoard.add(head + 10);
+                playerBoard.add(head + 20);
+
+                if ((head-1)%10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 30);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 21);
+                }
+                else if (head%10 == 0) {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 30);
+                    playerForbidden.add(head -1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 19);
+                }
+                else {
+                    playerForbidden.add(head - 10);
+                    playerForbidden.add(head + 30);
+                    playerForbidden.add(head + 1);
+                    playerForbidden.add(head - 1);
+                    playerForbidden.add(head + 9);
+                    playerForbidden.add(head + 11);
+                    playerForbidden.add(head + 19);
+                    playerForbidden.add(head + 21);
+                }
+                head = 0;
+                test = 0;
+
+                loopCount3++;
+                if(loopCount3<2) {
+                    layout1.getChildren().remove(enter8);
+                    layout1.getChildren().remove(placeShip);
+                    layout1.getChildren().add(startGame);
+                    prompt.setText("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
+                    System.out.println(playerBoard);
+                    System.out.println(playerForbidden);
+                }
+                else if(loopCount3>=2){
+                    layout1.getChildren().remove(enter8);
+                    layout1.getChildren().remove(placeShip);
+                    layout1.getChildren().add(startGame);
+                    prompt.setText("");
+                    System.out.println(playerBoard);
+                    System.out.println(playerForbidden);
+                }
+            }catch (Exception ex){
+                prompt.setText("Enter a valid number. Ships cannot touch or overlap");
+            }
+
+        });
+        startGame.setOnAction(e->{
+
+        });
+
+
+
+
+
+
+
+
         primaryStage.setScene(scene);
         primaryStage.show();
+        startButton.setOnAction(e-> primaryStage.setScene(scene1));
+        quitButton.setOnAction(e->System.exit(0));
     }
 }
