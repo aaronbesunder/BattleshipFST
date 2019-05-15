@@ -31,7 +31,7 @@ public class Boards {
             Ship five = new Ship(5, head, head+10, head+20, head+30, head+40);
         } else if (verthoriz == 1) {
             int column = (int) ((Math.random() * 6) + 1);
-            int row = (int) ((Math.random() * 10) + 1);
+            int row = (int) ((Math.random() * 10));
             int head = ((row * 10) + column);
             userBoard.add(head);
             userBoard.add(head + 1);
@@ -100,7 +100,7 @@ public class Boards {
                 do {
                     try {
                         int column = (int) ((Math.random() * 7) + 1);
-                        int row = (int) ((Math.random() * 10) + 1);
+                        int row = (int) ((Math.random() * 10));
                         head = ((row * 10) + column);
                         if (userBoard.contains(head) || userBoard.contains(head + 1) || userBoard.contains(head + 2) || userBoard.contains(head + 3) || forbiddenList.contains(head) || forbiddenList.contains(head + 1) || forbiddenList.contains(head + 2) || forbiddenList.contains(head + 3)) {
                             throw new IllegalArgumentException();
@@ -176,7 +176,7 @@ public class Boards {
                 do {
                     try {
                         int column = (int) ((Math.random() * 8) + 1);
-                        int row = (int) ((Math.random() * 10) + 1);
+                        int row = (int) ((Math.random() * 10));
                         head = ((row * 10) + column);
                         if (userBoard.contains(head) || userBoard.contains(head + 1) || userBoard.contains(head + 2) || forbiddenList.contains(head) || forbiddenList.contains(head + 1) || forbiddenList.contains(head + 2)) {
                             throw new IllegalArgumentException();
