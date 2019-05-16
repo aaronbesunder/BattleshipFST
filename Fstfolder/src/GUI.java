@@ -50,6 +50,7 @@ public class GUI extends Application {
     Line vertLine10= new Line(0,-400,0,100);
     Boards userBoard = new Boards();
     ArrayList<Integer> playerBoard = new ArrayList<>();
+    ArrayList<Button> buttonList= new ArrayList<>();
     int loopCount4=0;
     int loopCount3=0;
 
@@ -63,7 +64,7 @@ public class GUI extends Application {
     @Override
     public void start (Stage primaryStage)throws Exception{
         primaryStage.setTitle("Window Title");
-
+        System.out.println(userBoard.userBoard);
         startButton=new Button();
         startButton.setText("Start");
         quitButton= new Button();
@@ -115,6 +116,8 @@ public class GUI extends Application {
         Button enter8=new Button();
         Button enter9=new Button();
         Button startGame=new Button();
+        Button compTurn= new Button();
+        Button nextRound= new Button();
         enter.setText("Enter");
         enter.setTranslateY(250);
         enter2.setText("Enter2");
@@ -133,10 +136,17 @@ public class GUI extends Application {
         enter8.setTranslateY(250);
         enter9.setText("Enter9");
         enter9.setTranslateY(250);
-        Button testButton=new Button();
-        testButton.setMaxWidth(60);
+       /* Button testButton=new Button();
+        testButton.setMaxWidth(70);
+        testButton.setMaxHeight(45);
+        testButton.setTranslateY(-275);
+        testButton.setTranslateX(-337);*/
         startGame.setText("Start Game");
         startGame.setTranslateY(250);
+        compTurn.setText("Computer turn");
+        compTurn.setTranslateY(250);
+        nextRound.setText("Next Turn");
+        nextRound.setTranslateY(250);
         placeShip.maxWidth(50);
         placeShip.setTranslateY(225);
         Label prompt= new Label();
@@ -149,7 +159,6 @@ public class GUI extends Application {
         scene1=new Scene(layout1,800,600);
         layout.getChildren().addAll(backgroundView,startButton,quitButton);
         layout1.getChildren().addAll(box,horizLine,horizLine2,horizLine3,horizLine4,horizLine5,horizLine6,horizLine7,horizLine8,horizLine9,horizLine10,vertLine,vertLine2,vertLine3,vertLine4,vertLine5,vertLine6,vertLine7,vertLine8,vertLine9,vertLine10,enter,placeShip,prompt);
-        layout1.getChildren().add(testButton);
         enter.setOnAction(e->{
             int vertHoriz=0;
                 try {
@@ -547,8 +556,7 @@ public class GUI extends Application {
             head=0;
             loopCount3++;
             if(loopCount3<2) {
-                layout1.getChildren().remove(enter8);
-                layout1.getChildren().remove(placeShip);
+                layout1.getChildren().remove(enter8);;
                 layout1.getChildren().add(enter7);
                 prompt.setText("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
                 System.out.println(playerBoard);
@@ -623,14 +631,13 @@ public class GUI extends Application {
                 loopCount3++;
                 if(loopCount3<2) {
                     layout1.getChildren().remove(enter8);
-                    layout1.getChildren().remove(placeShip);
-                    layout1.getChildren().add(startGame);
+                    layout1.getChildren().add(enter7);
                     prompt.setText("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
                     System.out.println(playerBoard);
                     System.out.println(playerForbidden);
                 }
                 else if(loopCount3>=2){
-                    layout1.getChildren().remove(enter8);
+                    layout1.getChildren().remove(enter9);
                     layout1.getChildren().remove(placeShip);
                     layout1.getChildren().add(startGame);
                     prompt.setText("");
@@ -643,8 +650,165 @@ public class GUI extends Application {
 
         });
         startGame.setOnAction(e->{
+            prompt.setText("");
+            layout1.getChildren().remove(enter6);
+            for (int i=0; i<100;i++) {
+                    int guess=(i);
+                    int x=-337;
+                    int y=-275;
+                    if(i<=9) {
+                        buttonList.add(new Button(Integer.toString(i)));
+                        buttonList.get(i).setMaxHeight(45);
+                        buttonList.get(i).setMaxWidth(70);
+                        buttonList.get(i).setTranslateX((x) + (i * 75));
+                        buttonList.get(i).setTranslateY(y);
+                        buttonList.get(i).setText(Integer.toString((i)+1));
+                    }
 
+                  if (i>9&&i<=19){
+                        buttonList.add(new Button(Integer.toString(i)));
+                        buttonList.get(i).setMaxHeight(45);
+                        buttonList.get(i).setMaxWidth(70);
+                        buttonList.get(i).setTranslateX((x) + ((i-10) * 75));
+                        buttonList.get(i).setTranslateY((y)+(50));
+                        buttonList.get(i).setText(Integer.toString((i)+1));
+                    }
+                  if(i>19&&i<=29){
+                      buttonList.add(new Button(Integer.toString(i)));
+                      buttonList.get(i).setMaxHeight(45);
+                      buttonList.get(i).setMaxWidth(70);
+                      buttonList.get(i).setTranslateX((x) + ((i-20) * 75));
+                      buttonList.get(i).setTranslateY((y)+(100));
+                      buttonList.get(i).setText(Integer.toString((i)+1));
+                  }
+                  if(i>29&&i<=39){
+                      buttonList.add(new Button(Integer.toString(i)));
+                      buttonList.get(i).setMaxHeight(45);
+                      buttonList.get(i).setMaxWidth(70);
+                      buttonList.get(i).setTranslateX((x) + ((i-30) * 75));
+                      buttonList.get(i).setTranslateY((y)+(150));
+                      buttonList.get(i).setText(Integer.toString((i)+1));
+                  }
+                if(i>39&&i<=49){
+                    buttonList.add(new Button(Integer.toString(i)));
+                    buttonList.get(i).setMaxHeight(45);
+                    buttonList.get(i).setMaxWidth(70);
+                    buttonList.get(i).setTranslateX((x) + ((i-40) * 75));
+                    buttonList.get(i).setTranslateY((y)+(200));
+                    buttonList.get(i).setText(Integer.toString((i)+1));
+                }
+                if(i>49&&i<=59){
+                    buttonList.add(new Button(Integer.toString(i)));
+                    buttonList.get(i).setMaxHeight(45);
+                    buttonList.get(i).setMaxWidth(70);
+                    buttonList.get(i).setTranslateX((x) + ((i-50) * 75));
+                    buttonList.get(i).setTranslateY((y)+(250));
+                    buttonList.get(i).setText(Integer.toString((i)+1));
+                }
+                if(i>59&&i<=69){
+                    buttonList.add(new Button(Integer.toString(i)));
+                    buttonList.get(i).setMaxHeight(45);
+                    buttonList.get(i).setMaxWidth(70);
+                    buttonList.get(i).setTranslateX((x) + ((i-60) * 75));
+                    buttonList.get(i).setTranslateY((y)+(300));
+                    buttonList.get(i).setText(Integer.toString((i)+1));
+                }
+                if(i>69&&i<=79){
+                    buttonList.add(new Button(Integer.toString(i)));
+                    buttonList.get(i).setMaxHeight(45);
+                    buttonList.get(i).setMaxWidth(70);
+                    buttonList.get(i).setTranslateX((x) + ((i-70) * 75));
+                    buttonList.get(i).setTranslateY((y)+(350));
+                    buttonList.get(i).setText(Integer.toString((i)+1));
+                }if(i>79&&i<=89){
+                    buttonList.add(new Button(Integer.toString(i)));
+                    buttonList.get(i).setMaxHeight(45);
+                    buttonList.get(i).setMaxWidth(70);
+                    buttonList.get(i).setTranslateX((x) + ((i-80) * 75));
+                    buttonList.get(i).setTranslateY((y)+(400));
+                    buttonList.get(i).setText(Integer.toString((i)+1));
+                }if(i>89&&i<=99){
+                    buttonList.add(new Button(Integer.toString(i)));
+                    buttonList.get(i).setMaxHeight(45);
+                    buttonList.get(i).setMaxWidth(70);
+                    buttonList.get(i).setTranslateX((x) + ((i-90) * 75));
+                    buttonList.get(i).setTranslateY((y)+(450));
+                    buttonList.get(i).setText(Integer.toString((i)+1));
+                }
+                buttonList.get(i).setOnAction(d-> {
+                    if (userBoard.userBoard.contains((guess)+1)) {
+                        for (int k = 0; k < userBoard.userBoard.size(); k++) {
+                            if (userBoard.userBoard.get(k) == ((guess)+1) ){
+                                userBoard.userBoard.remove(k);
+                            }
+                        }
+                        buttonList.get(guess).setText("X");
+                        for(int j=0;j<buttonList.size();j++){
+                            layout1.getChildren().remove(buttonList.get(j));
+                        }
+                        prompt.setText("Hit");
+
+
+                    }
+                    else {
+                        buttonList.get(guess).setText("O");
+                        for(int j=0;j<buttonList.size();j++){
+                            layout1.getChildren().remove(buttonList.get(j));
+                        }
+                        prompt.setText("Miss");
+                    }
+                    layout1.getChildren().remove(startGame);
+                    startGame.setText("Next turn");
+                    layout1.getChildren().add(compTurn);
+
+                });
+                }
+
+            layout1.getChildren().addAll(buttonList);
+            layout1.getChildren().remove(startGame);
         });
+        compTurn.setOnAction(e->{
+
+
+            int cG=computerGuess.getComputerGuess();
+            if(playerBoard.contains(cG)){
+            for (int i=0;i<playerBoard.size();i++){
+                if (playerBoard.get(i)==cG){
+                    playerBoard.remove(i);
+                }
+                prompt.setText("Computer hit");
+                layout1.getChildren().remove(nextRound);
+                layout1.getChildren().add(nextRound);
+                layout1.getChildren().remove(compTurn);
+            }
+            }
+            else if(playerBoard.size()==0){
+                layout1.getChildren().clear();
+                prompt.setText("You Lose");
+                layout1.getChildren().add(prompt);
+            }
+            else {
+                prompt.setText("Computer miss");
+                layout1.getChildren().add(nextRound);
+                layout1.getChildren().remove(compTurn);
+            }
+        });
+        nextRound.setOnAction(e->{
+            for (int i=0;i<buttonList.size();i++){
+                layout1.getChildren().add(buttonList.get(i));
+            }
+            layout1.getChildren().remove(nextRound);
+            prompt.setText("");
+            System.out.println(userBoard.userBoard.size());
+            System.out.println(playerBoard.size());
+            if(userBoard.userBoard.size()==0){
+                layout1.getChildren().clear();
+                prompt.setText("You Win");
+                layout1.getChildren().add(prompt);
+            }
+        });
+
+
 
 
 
