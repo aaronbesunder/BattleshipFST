@@ -13,7 +13,6 @@ public class UserInterface {
         do {
             win = 0;
             Boards userBoard = new Boards();
-            System.out.println(userBoard.userBoard);
 
             System.out.println("Hello! Welcome to battleship."); //instructions
             System.out.println("On a 10 by 10 board, you will place five ships with different sizes either vertically or horizontally, without overlaps.");

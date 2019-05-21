@@ -10,7 +10,6 @@ public class AI {
     public int getComputerGuess() {
         boolean badData = true;
         double w = UserInterface.getWin();
-        System.out.println(w);
         if (w == 1.0) { //win is 1
             do {
                 try {
