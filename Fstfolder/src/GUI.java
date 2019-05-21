@@ -782,7 +782,7 @@ public class GUI extends Application {
                 layout1.getChildren().remove(compTurn);
             }
             }
-            else if(playerBoard.size()==0){
+            else if(playerBoard.size()==0) {
                 layout1.getChildren().clear();
                 prompt.setText("You Lose");
                 layout1.getChildren().add(prompt);
@@ -799,8 +799,6 @@ public class GUI extends Application {
             }
             layout1.getChildren().remove(nextRound);
             prompt.setText("");
-            System.out.println(userBoard.userBoard.size());
-            System.out.println(playerBoard.size());
             if(userBoard.userBoard.size()==0){
                 layout1.getChildren().clear();
                 prompt.setText("You Win");

@@ -67,7 +67,6 @@ public class AI {
                             }
                         }
                     }
-                    System.out.println(computerGuess);
                     if (guesses.contains(computerGuess) || computerGuess>100 || computerGuess<1) {
                         throw new IllegalArgumentException();
                     }
@@ -143,7 +142,6 @@ public class AI {
                             }
                         }
                     }
-                    System.out.println(computerGuess);
                     if (guesses.contains(computerGuess) || computerGuess>100 || computerGuess<1) {
                         throw new IllegalArgumentException();
                     }
@@ -219,7 +217,6 @@ public class AI {
                             }
                         }
                     }
-                    System.out.println(computerGuess);
                     if (guesses.contains(computerGuess) || computerGuess>100 || computerGuess<1) {
                         throw new IllegalArgumentException();
                     }
