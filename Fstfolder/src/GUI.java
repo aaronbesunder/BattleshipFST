@@ -118,23 +118,26 @@ public class GUI extends Application {
         Button startGame=new Button();
         Button compTurn= new Button();
         Button nextRound= new Button();
+        Button playAgain= new Button();
+        playAgain.setText("Play Again");
+        playAgain.setTranslateY(250);
         enter.setText("Enter");
         enter.setTranslateY(250);
-        enter2.setText("Enter2");
+        enter2.setText("Enter");
         enter2.setTranslateY(250);
-        enter3.setText("Enter3");
+        enter3.setText("Enter");
         enter3.setTranslateY(250);
-        enter4.setText("Enter4");
+        enter4.setText("Enter");
         enter4.setTranslateY(250);
-        enter5.setText("Enter5");
+        enter5.setText("Enter");
         enter5.setTranslateY(250);
-        enter6.setText("Enter6");
+        enter6.setText("Enter");
         enter6.setTranslateY(250);
-        enter7.setText("Enter7");
+        enter7.setText("Enter");
         enter7.setTranslateY(250);
-        enter8.setText("Enter8");
+        enter8.setText("Enter");
         enter8.setTranslateY(250);
-        enter9.setText("Enter9");
+        enter9.setText("Enter");
         enter9.setTranslateY(250);
        /* Button testButton=new Button();
         testButton.setMaxWidth(70);
@@ -236,8 +239,6 @@ public class GUI extends Application {
                 layout1.getChildren().remove(enter2);
                 layout1.getChildren().add(enter4);
                 prompt.setText("The next ship is a 4, type 0 to place it vertically or 1 to place horizontally");
-                System.out.println(playerBoard);
-                System.out.println(playerForbidden);
             }catch (Exception ex){
                 prompt.setText("Please choose a number in the correct range (1-60)");
             }
@@ -308,8 +309,6 @@ public class GUI extends Application {
                 layout1.getChildren().remove(enter3);
                 layout1.getChildren().add(enter4);
                 prompt.setText("The next ship is a 4, type 0 to place it vertically or 1 to place horizontally");
-                System.out.println(playerBoard);
-                System.out.println(playerForbidden);
             }catch (Exception ex){
                 prompt.setText("Enter a valid number (1-100 ending in 1-6)");
             }
@@ -392,15 +391,11 @@ public class GUI extends Application {
                     layout1.getChildren().remove(enter5);
                     layout1.getChildren().add(enter4);
                     prompt.setText("The next ship is a 4, type 0 to place it vertically or 1 to place horizontally");
-                    System.out.println(playerBoard);
-                    System.out.println(playerForbidden);
                 }
                 else if(loopCount4>=2){
                     layout1.getChildren().remove(enter5);
                     layout1.getChildren().add(enter7);
                     prompt.setText("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
-                    System.out.println(playerBoard);
-                    System.out.println(playerForbidden);
                 }
             }catch (Exception ex){
                 prompt.setText("Enter a valid number. Your ships may not touch or overlap.");
@@ -472,15 +467,11 @@ public class GUI extends Application {
                     layout1.getChildren().remove(enter5);
                     layout1.getChildren().add(enter4);
                     prompt.setText("The next ship is a 4, type 0 to place it vertically or 1 to place horizontally");
-                    System.out.println(playerBoard);
-                    System.out.println(playerForbidden);
                 }
                 else if(loopCount4>=2){
                     layout1.getChildren().remove(enter6);
                     layout1.getChildren().add(enter7);
                     prompt.setText("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
-                    System.out.println(playerBoard);
-                    System.out.println(playerForbidden);
                 }
             }catch (Exception ex){
                 prompt.setText("Enter a valid number. Ships cannot touch or overlap");
@@ -559,15 +550,11 @@ public class GUI extends Application {
                 layout1.getChildren().remove(enter8);;
                 layout1.getChildren().add(enter7);
                 prompt.setText("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
-                System.out.println(playerBoard);
-                System.out.println(playerForbidden);
             }
             else if(loopCount4>=2){
                 layout1.getChildren().remove(enter8);
                 layout1.getChildren().remove(placeShip);
                 layout1.getChildren().add(startGame);
-                System.out.println(playerBoard);
-                System.out.println(playerForbidden);
             }
             }catch (Exception ex){
                 prompt.setText("Enter a valid number. Your ships may not touch or overlap.");
@@ -633,16 +620,12 @@ public class GUI extends Application {
                     layout1.getChildren().remove(enter8);
                     layout1.getChildren().add(enter7);
                     prompt.setText("The next ship is a 3, type 0 to place it vertically or 1 to place horizontally");
-                    System.out.println(playerBoard);
-                    System.out.println(playerForbidden);
                 }
                 else if(loopCount3>=2){
                     layout1.getChildren().remove(enter9);
                     layout1.getChildren().remove(placeShip);
                     layout1.getChildren().add(startGame);
                     prompt.setText("");
-                    System.out.println(playerBoard);
-                    System.out.println(playerForbidden);
                 }
             }catch (Exception ex){
                 prompt.setText("Enter a valid number. Ships cannot touch or overlap");
@@ -786,6 +769,7 @@ public class GUI extends Application {
                 layout1.getChildren().clear();
                 prompt.setText("You Lose");
                 layout1.getChildren().add(prompt);
+                layout1.getChildren().add(playAgain);
             }
             else {
                 prompt.setText("Computer miss");
@@ -799,12 +783,11 @@ public class GUI extends Application {
             }
             layout1.getChildren().remove(nextRound);
             prompt.setText("");
-            System.out.println(userBoard.userBoard.size());
-            System.out.println(playerBoard.size());
             if(userBoard.userBoard.size()==0){
                 layout1.getChildren().clear();
                 prompt.setText("You Win");
                 layout1.getChildren().add(prompt);
+                layout1.getChildren().add(quitButton);
             }
         });
 
