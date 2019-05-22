@@ -64,7 +64,6 @@ public class GUI extends Application {
     @Override
     public void start (Stage primaryStage)throws Exception{
         primaryStage.setTitle("Window Title");
-        System.out.println(userBoard.userBoard);
         startButton=new Button();
         startButton.setText("Start");
         quitButton= new Button();
